@@ -1,24 +1,21 @@
-import { getAllArticles, getArticle } from "@/lib/api";
+import { getAllProjects, getProject } from "@/lib/api";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { draftMode } from "next/headers";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
-  const allArticles = await getAllArticles();
-
-  return allArticles.map((article) => ({
-    slug: article.slug,
+  const allProjects = await getAllProjects();
+  return allProjects.map((project) => ({
+    slug: project.slug,
   }));
 }
 
-export default async function KnowledgeArticlePage({
-  params,
-}) {
+export default async function ProjectPage({ params }) {
   const { isEnabled } = draftMode();
-  const article = await getArticle(params.slug, isEnabled);
+  const project = await getProject(params.slug, isEnabled);
 
-  if (!article) {
+  if (!project) {
     notFound();
   }
 
@@ -28,25 +25,24 @@ export default async function KnowledgeArticlePage({
         <div className="container space-y-12 px-4 md:px-6">
           <div className="space-y-4">
             <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl">
-              {article.title}
+              {project.titel}
             </h1>
             <p className="max-w-[900px] text-zinc-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-zinc-400">
-              {article.summary}
+              {project.shortDescription}
             </p>
           </div>
+
           <div className="space-y-8 lg:space-y-10">
             <Image
-              alt="Article Image"
+              alt="Project Image"
               className="aspect-video w-full overflow-hidden rounded-xl object-cover"
               height="365"
-              src={article.articleImage.url}
+              src={project.image?.url || "/placeholder.jpg"}
               width="650"
             />
             <div className="space-y-4 md:space-y-6">
-              <div className="space-y-2">
-                <div className="max-w-[900px] text-zinc-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-zinc-400">
-                  {documentToReactComponents(article.details.json)}
-                </div>
+              <div className="max-w-[900px] text-zinc-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-zinc-400">
+                {documentToReactComponents(project.details?.json || {})}
               </div>
             </div>
           </div>
