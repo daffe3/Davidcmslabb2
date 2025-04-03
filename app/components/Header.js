@@ -1,13 +1,12 @@
-import Link from "next/link";
-
-const Navbar = () => {
+export default function Navbar() {
   return (
-    <nav className="p-4 bg-gray-900 text-white flex gap-4">
-      <Link href="/">Home</Link>
-      <Link href="/app/projects">Projects</Link>
-      <Link href="/app/contact">Contact</Link>
+    <nav className="bg-gray-800 p-4">
+      <div className="flex justify-between items-center text-white">
+        <a href="/" className="text-xl font-bold">Start</a>
+        <div>
+          <a href="/projects" className="ml-4">All Project</a>
+        </div>
+      </div>
     </nav>
   );
-};
-
-export default Navbar;
+}
