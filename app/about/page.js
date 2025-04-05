@@ -1,4 +1,5 @@
 import { getAboutMeData } from "@/lib/api";
+import "../globals.css"
 
 export default async function AboutPage() {
   const about = await getAboutMeData();

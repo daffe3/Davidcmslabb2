@@ -1,4 +1,5 @@
 import { getHomepageData } from "@/lib/api";
+import "./globals.css";
 
 export default async function HomePage() {
   const homepage = await getHomepageData();
@@ -7,7 +8,14 @@ export default async function HomePage() {
     <main className="min-h-screen p-10 bg-gray-100">
       <h1 className="text-4xl font-bold">{homepage?.title || "Välkommen!"}</h1>
       <p>{homepage?.presentationText || "Ingen text hittad."}</p>
-      <img></img>
+
+      {homepage?.image?.url && (
+        <img
+          src={homepage.image.url}
+          alt={homepage.image.description || "Bild"}
+          className="mt-4 rounded shadow"
+        />
+      )}
     </main>
   );
 }

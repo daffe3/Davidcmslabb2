@@ -1,4 +1,5 @@
 import { getContactData } from "@/lib/api";
+import "../globals.css"
 
 export default async function ContactPage() {
   const contact = await getContactData();

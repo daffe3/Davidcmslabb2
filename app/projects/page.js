@@ -1,6 +1,7 @@
 import { getAllProjects, getCategories } from "@/lib/api";
 import Link from "next/link";
 import ProjectFilter from "@/app/components/ProjectFilter";
+import "../globals.css";
 
 export default async function ProjectsPage({ searchParams }) {
   const categoryFilter = searchParams?.category || null;
@@ -17,13 +18,20 @@ export default async function ProjectsPage({ searchParams }) {
         {projects.length > 0 ? (
           projects.map((project) => (
             <Link key={project.sys.id} href={`/project/${project.slug}`}>
-  <div className="p-4 bg-white shadow rounded">
-    <h2 className="text-2xl font-semibold">{project.titel}</h2>
-    <p className="text-gray-600">
-      {project.category?.name || "Ingen kategori"}
-    </p>
-  </div>
-</Link>
+              <div className="p-4 bg-white shadow rounded">
+                {project.image?.url && (
+                  <img
+                    src={project.image.url}
+                    alt={project.image.description || "Projektbild"}
+                    className="mb-4 rounded shadow"
+                  />
+                )}
+                <h2 className="text-2xl font-semibold">{project.titel}</h2>
+                <p className="text-gray-600">
+                  {project.category?.name || "Ingen kategori"}
+                </p>
+              </div>
+            </Link>
           ))
         ) : (
           <p>Inga projekt hittades.</p>
