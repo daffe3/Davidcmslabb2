@@ -112,14 +112,6 @@ img {
     display: inline-block;
     margin: 5px;
 }
-.bg-beige {
-    background-color: #F5F5DC;
-}
-
-.text-orangeAccent {
-    color: #FFA500;
-}
-
 
 .min-h-screen {
     min-height: 100vh;
