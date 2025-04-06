@@ -112,3 +112,61 @@ img {
     display: inline-block;
     margin: 5px;
 }
+.bg-beige {
+    background-color: #F5F5DC;
+}
+
+.text-orangeAccent {
+    color: #FFA500;
+}
+
+
+.min-h-screen {
+    min-height: 100vh;
+}
+
+.p-10 {
+    padding: 2.5rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+p {
+    font-size: 1.125rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #555;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    p {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+
+    img {
+        margin-top: 1rem;
+    }
+}

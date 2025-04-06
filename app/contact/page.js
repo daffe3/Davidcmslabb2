@@ -8,11 +8,10 @@ export default async function ContactPage() {
 
   return (
     <main>
-      <h1>Kontakt</h1>
-      <p>Här finns mitt nummer och mina sociala medier.</p>
+      <h1>Kontakta mig</h1>
 
       {contact?.image?.url ? (
-        <img src={contact.image.url} alt={contact.image.description || "Contact"} />
+        <img name={contact} src={contact.image.url} alt={contact.image.description || "Contact"} />
       ) : (
         <img src="/default-image.png" alt="Default contact image" />
       )}
